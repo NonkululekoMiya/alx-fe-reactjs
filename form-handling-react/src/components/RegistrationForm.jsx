@@ -22,9 +22,9 @@ const RegistrationForm = () => {
     e.preventDefault();
     // Basic validation
     const newErrors = {};
-    if (!formData.username) newErrors.username = 'Username is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    if (!formData.password) newErrors.password = 'Password is required';
+    if (!username) newErrors.username = 'Username is required';
+    if (!email) newErrors.email = 'Email is required';
+    if (!password) newErrors.password = 'Password is required';
 
     if (Object.keys(newErrors).length === 0) {
       console.log('Form data submitted:', formData);
