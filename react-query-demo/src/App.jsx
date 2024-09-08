@@ -9,6 +9,9 @@ function App() {
     <div className="App">
       <h1>Posts</h1>
       <PostsComponent />
+      <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
     </div>
   );
 }
