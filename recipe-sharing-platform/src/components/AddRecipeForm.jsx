@@ -9,15 +9,21 @@ const AddRecipeForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Simple front-end validation
-    const newErrors = {};
-    if (!title) newErrors.title = 'Title is required.';
-    if (!ingredients) newErrors.ingredients = 'Ingredients are required.';
-    if (!steps) newErrors.steps = 'Preparation steps are required.';
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
+     // Simple front-end validation
+     const newErrors = {};
+     if (!title.trim()) newErrors.title = 'Title is required.';
+     if (!ingredients.trim()) newErrors.ingredients = 'Ingredients are required.';
+     if (!steps.trim()) newErrors.steps = 'Preparation steps are required.';
+     
+     // Optionally, validate ingredients to ensure at least two items (split by newline)
+     if (ingredients.split('\n').filter(item => item.trim()).length < 2) {
+       newErrors.ingredients = 'Please provide at least two ingredients.';
+     }
+ 
+     if (Object.keys(newErrors).length > 0) {
+       setErrors(newErrors);
+       return;
+     }
 
     // Process the form data here (e.g., send it to a server or update state)
     console.log({ title, ingredients, steps });
