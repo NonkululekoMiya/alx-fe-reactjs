@@ -13,7 +13,7 @@ const UserDetail = () => {
         const userData = await fetchUserData(username);
         setUser(userData);
       } catch (error) {
-        console.error(error);
+        setError("Looks like we can't find the user.");
       } finally {
         setLoading(false);
       }
@@ -22,6 +22,7 @@ const UserDetail = () => {
   }, [username]);
 
   if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
   if (!user) return <p>User not found!</p>;
 
   return (
