@@ -15,3 +15,7 @@ export const getUser = async (username) => {
     throw error;
   }
 };
+
+export const fetchUserData = async (username) => {
+    return await getUser(username);
+  };
