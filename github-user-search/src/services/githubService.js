@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_URL = 'https://api.github.com/users';
 
-export const getUser = async (username) => {
+export const getUser = async (username, location, minRepos) => {
   try {
     const response = await axios.get(`${API_URL}/${username}`, {
       headers: {
